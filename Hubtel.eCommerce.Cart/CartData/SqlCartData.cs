@@ -46,20 +46,18 @@ namespace Hubtel.eCommerce.Cart.CartData
 
         }
 
-        public CartItem UpdateItem(CartItem cartItem)
+        public CartItem UpdateItem(int newQuantity, CartItem cartItem)
         {
-           
             //Updating the quantity
-            var item = _cartContext.Carts.Find(cartItem.Id);
+            int oldQuantity = cartItem.quantity;
 
-            int oldQuantity = item.quantity;
-            int newQuantity = cartItem.quantity;
             int updatedQuantity = oldQuantity + newQuantity;
-            item.quantity = updatedQuantity;
-            _cartContext.Carts.Update(item);
+            cartItem.quantity = updatedQuantity;
+            _cartContext.Carts.Update(cartItem);
             _cartContext.SaveChanges();
 
             return cartItem;
+            
         }
     }
 }

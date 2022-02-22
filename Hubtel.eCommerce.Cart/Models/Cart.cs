@@ -17,5 +17,8 @@ namespace Hubtel.eCommerce.Cart.Models
 
         [Required]
         public double unitPrice { get; set; }
+
+        [Required]
+        public string phoneNumber { get; set; }
     }
 }

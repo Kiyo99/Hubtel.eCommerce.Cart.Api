@@ -52,7 +52,7 @@ namespace Hubtel.eCommerce.Cart.Controllers
             if (item != null)
             {
                 _iCart.DeleteItem(item);
-                return Ok($"Employee with ID: {id} was deleted");
+                return Ok($"Item with ID: {id} was deleted");
             }
 
             return NotFound($"The Cart Item with id: {id} was not found");
@@ -73,13 +73,14 @@ namespace Hubtel.eCommerce.Cart.Controllers
                 {
                     //Means a similar ID was found, hence all that needs to be done is to update the quantity
                     //Updating the quantity
+                   // item.quantity = cartItem.quantity;
 
-                    _iCart.UpdateItem(cartItem);
+                    _iCart.UpdateItem(cartItem.quantity, item);
                     return Ok($"The item with ID: {id} was updated");
                 }
                else
                 {
-                    return NotFound($"The item with ID: {id} was not found");
+                    return NotFound($"The item with ID: {cartItem.Id} was not found");
                 }
             }
          
@@ -88,7 +89,7 @@ namespace Hubtel.eCommerce.Cart.Controllers
                 //Means no ID has been entered, hence what needs to be done is to create a new Id and save everything
                 //Creating a new ID for the cart Item
                 _iCart.AddItem(cartItem);
-                return Ok($"The item with ID: {id} was created");
+                return Ok(cartItem);
             }
             
         }

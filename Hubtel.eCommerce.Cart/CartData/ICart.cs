@@ -15,7 +15,7 @@ namespace Hubtel.eCommerce.Cart.CartData
 
         CartItem AddItem(CartItem cartItem);
 
-        CartItem UpdateItem(CartItem cartItem); 
+        CartItem UpdateItem(int newQuantity, CartItem cartItem); 
 
     }
 }
