@@ -40,8 +40,9 @@ namespace Hubtel.eCommerce.Cart.CartData
 
         public List<CartItem> GetItems()
         {
-            //figure out how ot filter or sort and add it in part of the queries
-            return _cartContext.Carts.ToList();
+            //figure out how to filter or sort and add it in part of the queries
+
+            return _cartContext.Carts.OrderBy(x => x.itemName).ToList();
 
         }
 
@@ -51,11 +52,11 @@ namespace Hubtel.eCommerce.Cart.CartData
             //Updating the quantity
             var item = _cartContext.Carts.Find(cartItem.Id);
 
-            var oldQuantity = item.quantity;
-            var newQuantity = cartItem.quantity;
-            var updatedQuantity = oldQuantity + newQuantity;
-            cartItem.quantity = updatedQuantity;
-            _cartContext.Carts.Update(cartItem);
+            int oldQuantity = item.quantity;
+            int newQuantity = cartItem.quantity;
+            int updatedQuantity = oldQuantity + newQuantity;
+            item.quantity = updatedQuantity;
+            _cartContext.Carts.Update(item);
             _cartContext.SaveChanges();
 
             return cartItem;

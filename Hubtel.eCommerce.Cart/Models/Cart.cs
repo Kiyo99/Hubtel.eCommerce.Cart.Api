@@ -9,7 +9,7 @@ namespace Hubtel.eCommerce.Cart.Models
         public Guid Id { get; set; }
 
         [Required]
-        [MaxLength(50, ErrorMessage = "Name can only be 50 characters long")]
+  
         public string itemName { get; set; }
 
         [Required]

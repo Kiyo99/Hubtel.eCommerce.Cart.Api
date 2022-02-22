@@ -74,7 +74,7 @@ namespace Hubtel.eCommerce.Cart.Controllers
                     //Means a similar ID was found, hence all that needs to be done is to update the quantity
                     //Updating the quantity
 
-                    _iCart.UpdateItem(item);
+                    _iCart.UpdateItem(cartItem);
                     return Ok($"The item with ID: {id} was updated");
                 }
                else
